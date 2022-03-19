@@ -16,8 +16,10 @@ public enum CurrencyConverter {
     }
 
     private static double roundedDouble(double inputDouble) {
-        System.out.println("in Converter :"+Double.parseDouble(df.format(inputDouble)));
         return Double.parseDouble(df.format(inputDouble));
     }
 
+    public double convertInRequiredCurrency(double faceValue, CurrencyConverter currencyConverter) {
+        return convertToDollar(faceValue, currencyConverter) / this.currency;
+       }
 }

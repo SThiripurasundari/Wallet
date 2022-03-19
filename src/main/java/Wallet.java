@@ -38,5 +38,12 @@ public class Wallet {
         return Objects.hash(faceValue, currencyConverter);
     }
 
+    public static Wallet putMoney(Wallet tenDollar) {
 
+        double finalValue = currencyConverter.convertInRequiredCurrency(faceValue,currencyConverter)+
+                currencyConverter.convertInRequiredCurrency(tenDollar.faceValue,currencyConverter);
+
+     return new Wallet(finalValue,currencyConverter);
+
+    }
 }

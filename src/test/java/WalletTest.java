@@ -24,5 +24,19 @@ public class WalletTest {
         assertThat(oneDollar, is((equalTo(SeventyFourPointEightFiveRupees))));
     }
 
+    @Test
+    void putMoneyInWallet() {
+
+        Wallet fiveDollar = Wallet.Dollar(5);
+        Wallet tenDollar = Wallet.Dollar(10);
+        Wallet totalInDollar = fiveDollar.putMoney(tenDollar);
+
+        Wallet fifteenDollar = Wallet.Dollar(15);
+
+        assertThat(fifteenDollar,is(equalTo(totalInDollar)));
+    }
+
+
+
 
 }
