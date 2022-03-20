@@ -35,7 +35,7 @@ public class WalletTest {
         Wallet tenDollarInWallet = dollar(10);
         Wallet fifteenDollar = dollar(15);
 
-        Wallet totalDollarsInWallet = tenDollarInWallet.putMoney(fiveDollar);
+        Wallet totalDollarsInWallet = tenDollarInWallet.put(fiveDollar);
 
         assertThat(totalDollarsInWallet, is((equalTo(fifteenDollar))));
     }
@@ -48,7 +48,7 @@ public class WalletTest {
         Wallet tenRupees = rupee(10);
         Wallet fifteenRupees = rupee(15);
 
-        Wallet totalRupeesInWallet = fiveRupeesInWallet.putMoney(tenRupees);
+        Wallet totalRupeesInWallet = fiveRupeesInWallet.put(tenRupees);
 
         assertThat(totalRupeesInWallet, is(equalTo(fifteenRupees)));
     }
@@ -83,7 +83,7 @@ public class WalletTest {
 
         Wallet fiftyRupees = rupee(50);
         Wallet oneDollar = dollar(1);
-        Wallet totalWalletMoneyInRupees = fiftyRupees.putMoney(oneDollar);
+        Wallet totalWalletMoneyInRupees = fiftyRupees.put(oneDollar);
 
         Wallet hundredTwentyFourPointEightFive = rupee(124.85);
 
@@ -98,8 +98,8 @@ public class WalletTest {
         Wallet hundredFortyNinePointSevenRupees = rupee(149.7);
         Wallet fourDollar = dollar(4);
 
-        Wallet totalWalletMoneyInDollars = oneDollar.putMoney(seventyFourPointEightyFiveRupees).
-                putMoney(hundredFortyNinePointSevenRupees);
+        Wallet totalWalletMoneyInDollars = oneDollar.put(seventyFourPointEightyFiveRupees).
+                put(hundredFortyNinePointSevenRupees);
 
         assertThat(totalWalletMoneyInDollars, is(equalTo(fourDollar)));
     }

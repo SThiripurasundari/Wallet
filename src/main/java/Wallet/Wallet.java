@@ -32,7 +32,7 @@ public class Wallet {
     }
 
 
-    public Wallet putMoney(Wallet tenDollar) {
+    public Wallet put(Wallet tenDollar) {
 
         double faceValueOfCurrentObject = Currency.convertToDollar(faceValue, currency);
         double faceValueOfOtherObject = Currency.convertToDollar(tenDollar.faceValue, tenDollar.currency);
