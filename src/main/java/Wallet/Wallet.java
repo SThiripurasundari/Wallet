@@ -27,7 +27,8 @@ public class Wallet {
         if (o == null || getClass() != o.getClass()) return false;
         Wallet otherCurrency = (Wallet) o;
 
-        return Double.compare(Currency.convertToDollar(faceValue, currency), Currency.convertToDollar(otherCurrency.faceValue, otherCurrency.currency)) == 0;
+        return Double.compare(Currency.convertToDollar(faceValue, currency),
+                Currency.convertToDollar(otherCurrency.faceValue, otherCurrency.currency)) == 0;
     }
 
 
@@ -47,14 +48,14 @@ public class Wallet {
     public Wallet take(Wallet otherWalletObject) throws InSufficientException {
 
         double faceValueOfCurrentObject = Currency.convertToDollar(faceValue, currency);
-        double faceValueOfOtherInDollar = Currency.convertToDollar(otherWalletObject.faceValue, otherWalletObject.currency);
+        double faceValueOfOtherObject = Currency.convertToDollar(otherWalletObject.faceValue, otherWalletObject.currency);
 
-        if (faceValueOfOtherInDollar > faceValueOfCurrentObject) throw new InSufficientException();
+        if (faceValueOfOtherObject > faceValueOfCurrentObject) throw new InSufficientException();
 
-        double first = this.currency.convertInRequiredCurrency(faceValueOfCurrentObject);
-        double second = this.currency.convertInRequiredCurrency(faceValueOfOtherInDollar);
+        double currentObjectInDesiredCurrency = currency.convertInRequiredCurrency(faceValueOfCurrentObject);
+        double otherObjectInDesiredCurrency = currency.convertInRequiredCurrency(faceValueOfOtherObject);
 
-        return new Wallet((first - second), currency);
+        return new Wallet((currentObjectInDesiredCurrency - otherObjectInDesiredCurrency), currency);
 
     }
 
